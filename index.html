@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skin Studio — Minecraft</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="cube">◆</span><span>SKIN<span>STUDIO</span></span></a>
+    <div class="top-actions">
+      <button class="ghost" id="newSkin">Nueva skin</button>
+      <label class="ghost file-button">Importar PNG<input id="importSkin" type="file" accept="image/png" /></label>
+      <button class="download" id="downloadSkin">↓ Descargar PNG</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <aside class="tools-panel">
+      <section>
+        <p class="eyebrow">HERRAMIENTAS</p>
+        <div class="tool-grid">
+          <button class="tool active" data-tool="brush" title="Pincel (B)"><b>✎</b><span>Pincel</span><kbd>B</kbd></button>
+          <button class="tool" data-tool="eraser" title="Borrador (E)"><b>⌫</b><span>Borrador</span><kbd>E</kbd></button>
+          <button class="tool" data-tool="eyedropper" title="Cuentagotas (I)"><b>◉</b><span>Color</span><kbd>I</kbd></button>
+          <button class="tool" data-tool="fill" title="Rellenar (G)"><b>▰</b><span>Rellenar</span><kbd>G</kbd></button>
+        </div>
+      </section>
+      <section class="history">
+        <p class="eyebrow">HISTORIAL</p>
+        <div class="history-actions"><button id="undo" title="Deshacer">↶</button><button id="redo" title="Rehacer">↷</button></div>
+      </section>
+      <section>
+        <p class="eyebrow">VISTA</p>
+        <div class="view-buttons">
+          <button data-view="front" class="selected">Frente</button><button data-view="back">Espalda</button>
+          <button data-view="left">Izquierda</button><button data-view="right">Derecha</button>
+        </div>
+        <p class="hint">Arrastra para girar · rueda para acercar</p>
+      </section>
+      <section class="layers">
+        <p class="eyebrow">CAPAS</p>
+        <label><input id="outerLayer" type="checkbox" checked /> Mostrar segunda capa</label>
+      </section>
+    </aside>
+
+    <section class="stage">
+      <div class="stage-header"><div><span class="status-dot"></span> LIENZO 3D</div><span>64 × 64 px</span></div>
+      <div id="viewer"></div>
+      <div class="viewer-tip">Haz clic sobre el modelo para pintar</div>
+    </section>
+
+    <aside class="color-panel">
+      <section>
+        <p class="eyebrow">COLOR ACTIVO</p>
+        <div class="active-color"><input id="colorPicker" type="color" value="#8b5a3c" /><div><strong id="hexValue">#8B5A3C</strong><span>Opacidad 100%</span></div></div>
+      </section>
+      <section>
+        <p class="eyebrow">PALETA</p>
+        <div class="swatches" id="swatches"></div>
+      </section>
+      <section>
+        <div class="texture-title"><p class="eyebrow">TEXTURA 2D</p><button id="toggleTexture">⌃</button></div>
+        <div class="texture-wrap"><canvas id="textureCanvas" width="64" height="64"></canvas><div class="texture-labels"><span>Cabeza</span><span>Cuerpo</span></div></div>
+        <p class="hint">También puedes pintar directamente aquí</p>
+      </section>
+      <footer>Formato clásico 64 × 64 · Compatible con Minecraft Bedrock</footer>
+    </aside>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
